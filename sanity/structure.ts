@@ -18,4 +18,4 @@ export const structure: StructureResolver = (S) =>
       ...S.documentTypeListItems().filter(
         (item) => item.getId() !== 'siteSettings',
       ),
-    ])
+    ]) //
