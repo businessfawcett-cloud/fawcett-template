@@ -15,7 +15,7 @@ export const structure: StructureResolver = (S) =>
             .documentId('siteSettings'),
         ),
       S.divider(),
-      ...S.documentTypeListItems().filter(
-        (item) => item.getId() !== 'siteSettings',
-      ),
+      S.documentTypeListItem('page').title('Pages'),
+      S.documentTypeListItem('service').title('Services'),
+      S.documentTypeListItem('navItem').title('Navigation Items'),
     ])
