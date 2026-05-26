@@ -11,11 +11,11 @@ export const structure: StructureResolver = (S, {schema}) =>
         .icon(CogIcon)
         .child(
           S.document()
-            .schemaType('siteSettings')
-            .documentId('siteSettings'),
+            .schemaType('globalSettings')
+            .documentId('globalSettings'),
         ),
       S.divider(),
       ...S.documentTypeListItems().filter(
-        (item) => !['siteSettings'].includes(item.getId() ?? '')
+        (item) => !['globalSettings'].includes(item.getId() ?? '')
       ),
     ])

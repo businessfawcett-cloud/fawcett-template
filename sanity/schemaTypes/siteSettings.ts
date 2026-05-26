@@ -2,7 +2,7 @@ import { defineType, defineField } from 'sanity'
 import { CogIcon } from '@sanity/icons'
 
 export const siteSettings = defineType({
-  name: 'siteSettings',
+  name: 'globalSettings',
   title: 'Site Settings',
   type: 'document',
   icon: CogIcon,
