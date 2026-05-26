@@ -5,9 +5,7 @@ const nextConfig: NextConfig = {
     root: __dirname,
   },
   experimental: {
-    turbotrace: {
-      memoryLimit: 512,
-    },
+    turbopackMemoryLimit: 512 * 1024 * 1024,
   },
 };
 
