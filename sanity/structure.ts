@@ -1,23 +1,12 @@
 import type {StructureResolver} from 'sanity/structure'
 import {CogIcon} from '@sanity/icons'
 
-const BUNDLED_DOC_TYPES = ['sanity.imageAsset', 'sanity.fileAsset']
-
-export const structure: StructureResolver = (S, context) => {
-  const documentTypes = context.schema
-    .getTypeNames()
-    .filter(
-      (name) =>
-        name !== 'siteSettings' &&
-        !BUNDLED_DOC_TYPES.includes(name) &&
-        context.schema.get(name)?.type?.name === 'document',
-    )
-
-  return S.list()
+export const structure: StructureResolver = (S) =>
+  S.list()
     .title('Content')
     .items([
       S.listItem()
-        .id('siteSettings')
+        .id('siteSettingsSingleton')
         .title('Site Settings')
         .icon(CogIcon)
         .child(
@@ -26,6 +15,7 @@ export const structure: StructureResolver = (S, context) => {
             .documentId('siteSettings'),
         ),
       S.divider(),
-      ...documentTypes.map((name) => S.documentTypeListItem(name)),
+      ...S.documentTypeListItems().filter(
+        (item) => item.getId() !== 'siteSettings',
+      ),
     ])
-}
