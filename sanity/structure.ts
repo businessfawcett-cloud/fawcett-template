@@ -1,7 +1,7 @@
 import type {StructureResolver} from 'sanity/structure'
 import {CogIcon} from '@sanity/icons'
 
-export const structure: StructureResolver = (S) =>
+export const structure: StructureResolver = (S, {schema}) =>
   S.list()
     .title('Content')
     .items([
@@ -15,7 +15,7 @@ export const structure: StructureResolver = (S) =>
             .documentId('siteSettings'),
         ),
       S.divider(),
-      S.documentTypeListItem('page').title('Pages'),
-      S.documentTypeListItem('service').title('Services'),
-      S.documentTypeListItem('navItem').title('Navigation Items'),
+      ...S.documentTypeListItems().filter(
+        (item) => !['siteSettings'].includes(item.getId() ?? '')
+      ),
     ])
