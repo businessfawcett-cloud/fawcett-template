@@ -7,6 +7,7 @@ export const structure: StructureResolver = (S) =>
     .title('Content')
     .items([
       S.listItem()
+        .id('siteSettingsSingleton')
         .title('Site Settings')
         .icon(CogIcon)
         .child(
@@ -18,4 +19,4 @@ export const structure: StructureResolver = (S) =>
       ...S.documentTypeListItems().filter(
         (item) => item.getId() !== 'siteSettings',
       ),
-    ]) //
+    ])
